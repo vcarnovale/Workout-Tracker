@@ -1,0 +1,32 @@
+name: workout-tracker
+services:
+  # frontend:
+  #   build: ./frontend
+  #   networks:
+  #     - client-side
+  #   ports: 5000:5000
+  #   environment:
+  #     - name=value
+  #   container_name: frontend
+
+
+  # backend:
+  #   container_name: restapi
+  #   build: ./restapi
+  #   ports:
+  #     - 8080:8080
+
+
+  postgres_server:
+    image: postgres:13.2-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD: ${DBPASS}
+    container_name: fitness_db
+    volumes:
+      - database:/var/lib/postgresql/data
+
+
+
+volumes:
+  database:
