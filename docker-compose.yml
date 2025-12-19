@@ -21,8 +21,8 @@ services:
     image: postgres:18
     restart: unless-stopped
     environment:
-      - POSTGRES_USER: ${DBUSER}
-      - POSTGRES_PASSWORD: ${DBPASS}
+      - POSTGRES_USER: test
+      - POSTGRES_PASSWORD: test
       - POSTGRES_DB: fitness_db
     container_name: fitness_db
     ports:
