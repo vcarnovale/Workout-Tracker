@@ -17,12 +17,16 @@ services:
   #     - 8080:8080
 
 
-  postgres_server:
-    image: postgres:13.2-alpine
+  postgres_db:
+    image: postgres:18
     restart: unless-stopped
     environment:
+      - POSTGRES_USER: ${DBUSER}
       - POSTGRES_PASSWORD: ${DBPASS}
+      - POSTGRES_DB: fitness_db
     container_name: fitness_db
+    ports:
+      - "5232:5232"
     volumes:
       - database:/var/lib/postgresql/data
 
