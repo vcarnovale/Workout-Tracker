@@ -1,0 +1,25 @@
+
+CREATE TABLE USER (
+    userid SERIAL PRIMARY KEY,
+    username VARCHAR(15) UNIQUE NOT NULL,
+)
+
+CREATE TABLE WORKOUTS (
+    userid INTEGER NOT NULL REFERENCES USER(userid) PRIMARY KEY,
+    life_weight INT,
+    lift_reps INT,
+    workout_date TIMESTAMPTZ NOT NULL,
+    rep_range VARCHAR(10),
+)
+
+CREATE TABLE USERWEIGHT (
+    userid INTEGER NOT NULL REFERENCES USER(userid) PRIMARY KEY,
+    uweight DECIMAL(10, 2),
+    tstamp TIMESTAMPTZ NOT NULL,
+);
+
+CREATE TABLE USERHEIGHT (
+    userid INTEGER NOT NULL REFERENCES USER(userid) PRIMARY KEY,
+    uheight INT,
+    tstamp TIMESTAMPTZ NOT NULL,
+);
